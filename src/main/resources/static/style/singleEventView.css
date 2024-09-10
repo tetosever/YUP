@@ -1,0 +1,59 @@
+.btn-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.modal-header, .modal-footer, .modal-body {
+    border: none;
+}
+
+.modal-dialog-centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    width: fit-content;
+}
+.modal-body {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+#generateQrCodeModalLabel{
+    color: #3168b8;
+}
+#generateQrCodeModalLabel > span{
+    font-weight: 600;
+    margin-right: 30px;
+}
+#qr-code-image{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+#qr-code-text{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 10px;
+    color: grey;
+}
+.YupTeamEmailModal{
+    width:fit-content;
+    border: none;
+    color: #8b62f4;
+    padding:0 !important;
+}
+.event-footer > div{
+    display: flex;
+}
+.YupTeamEmailModal:hover{
+    border: none;
+    color: #8b62f4;
+}
+.YupTeamEmailModal:focus{
+    border: none;
+    color: #8b62f4;
+}
+#generateQrCodeModal{
+    width: 100%;
+}

@@ -1,0 +1,52 @@
+<div class="external-card" th:fragment="events(event)" th:if="${event != null}">
+    <div class="card">
+        <div th:class="${event.participants == 0 ? 'zero-participants-class' : (event.participants <= (0.15 * event.participantsMaxNumber) ? 'low-participants-class' : 'high-participants-class')}">
+            <span th:if="${event.participants == 0}">FULL</span>
+            <span th:if="${event.participants > 0 and event.participants <= (0.15 * event.participantsMaxNumber)}">FEW LEFT</span>
+            <span th:if="${event.participants > (0.15 * event.participantsMaxNumber)}">AVAILABLE</span>
+        </div>
+        <div class="card-image">
+            <img th:if="${event.eventImage != null && event.eventImage.length > 0}"
+                 th:src="@{'/event/' + ${event.id} + '/image'}"
+                 alt="Event Image" class="img-fluid">
+            <img th:if="${event.eventImage == null || event.eventImage.length == 0}"
+                 th:src="@{/images/default-image.jpg}"
+                 alt="Event Image" class="img-fluid">
+        </div>
+        <div class="card-body">
+            <div class="badges">
+                <div th:text="${event.tag}"></div>
+            </div>
+            <h6>
+                <span th:text="${#strings.length(event.name) > 25 ? event.name.substring(0, 25) + '...' : event.name}"></span>
+            </h6>
+            <div>
+                <p>
+                    <span th:text="${#strings.length(event.location) > 25 ? event.location.substring(0, 25) + '...' : event.location}"></span>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <span th:text="${#temporals.format(event.startDateTime, 'EEE - dd MMM, HH:mm')}"></span>
+                </p>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div th:if="${myEvents}">
+                <div>
+                <span>
+                     <a th:href="@{/event/myEvents/{id}(id=${event.id})}">MANAGE</a>
+                </span>
+                </div>
+            </div>
+            <div th:unless="${myEvents}">
+                <div>
+                <span>
+                    <a th:href="@{/event/{id}(id=${event.id})}">MORE</a>
+                </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

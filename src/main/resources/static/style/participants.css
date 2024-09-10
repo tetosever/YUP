@@ -1,0 +1,136 @@
+.center-participants {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+    height: 0;
+    box-shadow: inset 0 -20px 20px -25px rgba(255, 255, 255, 0.2);
+}
+
+.participants {
+    background-color: white;
+    padding: 35px 45px;
+    width: 50%;
+    border-radius: 10px;
+    position: relative;
+}
+.participants > h3 {
+    color: #3268b8;
+    padding-bottom: 20px;
+}
+
+#our-table{
+    margin-bottom:25px;
+}
+
+table td,
+table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.table-scroll table thead th {
+    background-color: transparent;
+    font-weight: 600;
+    color: gray;
+    border-bottom: 2px solid grey;
+}
+
+.table-scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+    border-radius: .5rem;
+}
+
+#filterButtons{
+    color:#3268b8;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+#filterButtons input {
+    flex: 1;
+}
+
+#filterButtons div {
+    display: flex;
+    gap: 0.5rem;
+}
+.input-data{
+    margin-bottom: 0;
+}
+.hidden {
+    display: none;
+}
+
+.blink {
+    color: black;
+    animation: blink 1s infinite;
+}
+.table-responsive-sm{
+    border-radius: 0;
+}
+#typewriterText {
+    color: black;
+}
+#participantTable{
+    height: 200px;
+    overflow: scroll;
+    color: gray;
+    border-bottom: 1px solid gray;
+}
+#participantTable > tr > td {
+    color: gray;
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .table td,
+    .table th {
+        padding: 0.25rem;
+        margin: 0.1rem;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .participants {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .participants {
+        width: 95%;
+    }
+
+    #typewriterText {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    #typewriterText {
+        font-size: 12px;
+    }
+
+    #containerForTypewriterText {
+        margin-bottom: 25px;
+    }
+}

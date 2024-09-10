@@ -1,0 +1,442 @@
+.our-form {
+    background-color: white;
+    padding: 35px 45px;
+    width: 50%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.btn-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+.center-for-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+    height: 0;
+    box-shadow: inset 0 -20px 20px -25px rgba(255, 255, 255, 0.2);
+}
+
+#inputFirstname, #inputLastname, #inputDescription, #inputName {
+    text-transform: capitalize;
+}
+
+.our-form > h3 {
+    color: #3268b8;
+    margin-bottom: 5px;
+}
+
+.btn-primary {
+    background-color: #8b62f4;
+    padding: 9px 17px;
+    margin-left: auto;
+    border: 2px solid #8b62f4;
+    border-radius: 5px;
+}
+#confirmDeleteModalLabel{
+    font-size: 18px;
+    color: #3168b8;
+}
+
+.g-recaptcha {
+    margin-bottom: 25px;
+}
+
+.g-recaptcha > div {
+    margin: 0 auto;
+    transform: scale(0.9);
+}
+
+.center-for-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.align-for-button{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+.modal-body > p {
+    font-size: 13px;
+    color: black;
+}
+
+#typewriterText {
+    color: black;
+}
+
+#containerForTypewriterText {
+    display: inline-block;
+    margin-bottom: 35px;
+}
+
+.input-data, .input-data-box, .input-data-area {
+    position: relative;
+    margin-bottom: 27px;
+}
+
+.btn-file-upload {
+    position: relative;
+    margin-bottom: 35px;
+    color: black !important;
+    padding: 0;
+    font-size: 16px;
+    border: 0;
+}
+
+.input-data-area > textarea {
+    display: block;
+    width: 100%;
+    border: 0;
+    font-size: 16px;
+    color: black;
+    height: 50px;
+    resize: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.input-data > input {
+    display: block;
+    width: 100%;
+    border: 0;
+    font-size: 16px;
+    color: black;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.input-data-box > select, .input-data-box > input[type="datetime-local"] {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    border-bottom: 3px solid #3268b8;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.input-data > label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 8px;
+    font-size: 16px;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.input-data-area > label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 8px;
+    font-size: 16px;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.input-data-box > label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 8px;
+    transform: translateY(-16px);
+    font-size: 14px;
+    color: #3268b8;
+    left: 0;
+}
+
+.input-data > .underline, .input-data-area > .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.input-data > .underline:before, .input-data-area > .underline:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #3268b8;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.input-data input:focus ~ label, .input-data input:not(:placeholder-shown) ~ label {
+    transform: translateY(-16px);
+    font-size: 14px;
+    color: #3268b8;
+}
+
+.input-data-area textarea:focus ~ label, .input-data-area textarea:not(:placeholder-shown) ~ label {
+    transform: translateY(-36px);
+    font-size: 14px;
+    color: #3268b8;
+}
+
+.input-data input:focus ~ .underline:before, .input-data input:not(:placeholder-shown) ~ .underline:before,
+.input-data-area textarea:focus ~ .underline:before, .input-data-area textarea:not(:placeholder-shown) ~ .underline:before {
+    transform: scale(1);
+}
+
+.input-data > input:focus, .input-data > input:active,
+.input-data-area > textarea:focus, .input-data-area > textarea:active {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+}
+
+.input-data-box > select:focus, .input-data-box > select:active,
+.input-data-box input[type="datetime-local"]:focus, .input-data-box input[type="datetime-local"]:active {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    border-bottom: 2px solid #3268b8;
+}
+
+input[type=file]::file-selector-button {
+    border: 2px solid #8b62f4;
+    background: white;
+    padding: 7px 14px;
+    border-radius: 5px;
+    color: #8b62f4;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type=file]::file-selector-button:hover {
+    color: #8A74C2;
+    border: 2px solid #8A74C2;
+    animation-duration: 1s;
+    transition: background-color 1s ease, color 1s ease, border-color 1s ease;
+}
+
+.blink {
+    color: black;
+    animation: blink 1s infinite;
+}
+
+.btn-file-upload:hover {
+    color: black;
+}
+
+#searchBoxContainer,
+.MicrosoftMap,
+#as_containerSearch_searchBox,
+.asOuterContainer,
+.bingLogoContainer {
+    width: 100% !important;
+    display: block !important;
+}
+
+.MicrosoftMap .as_container ul {
+    padding: 0 !important;
+    max-height: 150px !important;
+    overflow: scroll !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+}
+
+#searchBox {
+    box-sizing: inherit !important;
+}
+
+.bingLogoContainer > span {
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.btn-registration {
+    background-color: white;
+    padding: 9px 17px;
+    border: 0;
+    border: 2px solid #8b62f4;
+    color: #8b62f4;
+    border-radius: 5px;
+}
+.btn-registration, .btn-primary {
+    width: 120px;
+    justify-content: center;
+}
+.btn-registration:hover {
+    color: #8A74C2;
+    border: 2px solid #8A74C2;
+    transition: background-color 1s ease, color 1s ease, border-color 1s ease;
+}
+
+.btn-registration:active {
+    color: #8A74C2;
+    border: 2px solid #8A74C2;
+}
+
+.btn-primary:hover {
+    background-color: #8A74C2;
+    border: 2px solid #8A74C2;
+    animation-duration: 1s;
+}
+
+.btn-primary:active, .btn-primary:focus {
+    background-color: #8A74C2 !important;
+    border: 2px solid #8A74C2 !important;
+}
+
+.google-captcha-icon {
+    text-align: center;
+}
+
+.google-captcha-icon > a {
+    color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    font-size: 14px;
+}
+
+.google-captcha-icon > a > svg {
+    margin-right: 8px;
+}
+
+.google-captcha-icon > a:hover {
+    border-color: #3268b8;
+    color: #3268b8;
+    transition: background-color 1s ease, color 1s ease, border-color 1s ease;
+}
+#changePasswordButton{
+    background-color: transparent;
+    padding: 0;
+    margin-right: 6px;
+    color: #8b62f4;
+}
+#changePasswordButton:focus, #changePasswordButton:hover{
+    background-color: transparent;
+    color: #8b62f4;
+    border: 0 !important;
+}
+.alert{
+    z-index: 10000;
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 992px) {
+    .our-form {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .our-form {
+        width: 95%;
+    }
+
+    .input-data > label, .input-data > input {
+        font-size: 14px;
+    }
+
+    .input-data-box > label, .input-data-box > select, .input-data-box > input, .input-data-box input[type="datetime-local"] {
+        font-size: 12px;
+    }
+
+    .input-data-area > textarea, .input-data-area > label {
+        font-size: 14px;
+    }
+
+    .input-data input:focus ~ label, .input-data input:not(:placeholder-shown) ~ label {
+        font-size: 12px;
+    }
+
+    .input-data-area textarea:focus ~ label, .input-data-area textarea:not(:placeholder-shown) ~ label {
+        font-size: 12px;
+    }
+
+    #typewriterText {
+        font-size: 14px;
+    }
+
+    .btn-file-upload {
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    #typewriterText {
+        font-size: 12px;
+    }
+
+    #containerForTypewriterText {
+        margin-bottom: 25px;
+    }
+
+    .input-data > label, .input-data > input {
+        font-size: 12px;
+    }
+
+    .input-data-box > label, .input-data-box > select, .input-data-box > input, .input-data-box input[type="datetime-local"] {
+        font-size: 10px;
+    }
+
+    .input-data-area > textarea, .input-data-area > label {
+        font-size: 12px;
+    }
+
+    .input-data input:focus ~ label, .input-data input:not(:placeholder-shown) ~ label {
+        font-size: 10px;
+    }
+
+    .input-data-area textarea:focus ~ label, .input-data-area textarea:not(:placeholder-shown) ~ label {
+        font-size: 10px;
+    }
+
+    .our-form {
+        padding: 25px 35px;
+    }
+
+    .input-data {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .btn-primary, .btn-registration {
+        padding: 7px 15px;
+        width: 100px;
+    }
+
+    .btn-file-upload > input[type=file]::file-selector-button {
+        padding: 5px 12px;
+    }
+
+    .btn-file-upload {
+        font-size: 10px;
+    }
+
+    .g-recaptcha > div {
+        transform: scale(0.77);
+    }
+
+    .google-captcha-icon > a {
+        font-size: 12px;
+    }
+    #changePasswordButton{
+        margin-right: -2px;
+    }
+}

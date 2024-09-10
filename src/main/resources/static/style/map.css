@@ -1,0 +1,86 @@
+#map {
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 10px;
+}
+
+.mapboxgl-canvas-container {
+    height: 100%;
+    width: 100%;
+}
+
+.mapboxgl-canvas {
+    height: 100%;
+    width: 100%;
+}
+
+.mapboxgl-popup-close-button {
+    display: none;
+}
+
+.btn-list-view {
+    margin-bottom: 6px;
+}
+
+.mapboxgl-popup-content {
+    font-family: 'Poppins', sans-serif !important;
+    display: flex !important;
+    justify-content: center !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-weight: initial !important;
+    padding: 0 !important;
+}
+
+.mapboxgl-popup {
+    max-width: initial !important;
+}
+
+.mapboxgl-popup-content > .card {
+    height: initial;
+    margin: 0 !important;
+}
+
+.badges, .card-footer, .badges div, .card-footer div,
+.badges h6, .card-footer h6,
+.badges p, .card-footer p,
+.badges span, .card-footer span,
+.card-footer div h6, .card-footer div p,
+.card-footer div span {
+    line-height: 1.5;
+}
+
+.zero-participants-class {
+    border: 2px solid #DB2B3D;
+    background: rgba(0, 44, 142, 0.6);
+    color: #DB2B3D;
+}
+
+.low-participants-class {
+    border: 2px solid #DB724F;
+    background: rgba(0, 44, 142, 0.6);
+    color: #DB724F;
+}
+
+.high-participants-class {
+    border: 2px solid #4FDB6F;
+    background: rgba(0, 44, 142, 0.6);
+    color: #4FDB6F;
+}
+
+.zero-participants-class, .low-participants-class, .high-participants-class {
+    display: flex;
+    font-size: 10px;
+    border-radius: 7px;
+    width: fit-content;
+    padding: 4px 8px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+@media (max-width: 576px) {
+    .mapboxgl-ctrl-top-right > .mapboxgl-ctrl {
+        width: 200px !important;
+    }
+}

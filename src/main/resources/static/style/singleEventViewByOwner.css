@@ -1,0 +1,121 @@
+video{
+    border: none;
+}
+.YupTeamEmailModal, .YupTeamEmailModal:active, .YupTeamEmailModal:focus {
+    background-color: transparent !important;
+    border: none;
+    text-align: left;
+    width: fit-content;
+    font-size: 12px;
+    text-decoration: underline;
+    font-style: italic;
+    margin-left: 15px;
+}
+.modal-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.YupTeamEmailModal:hover {
+    color: rgba(255, 255, 255, 0.2);
+    animation-duration: 1s;
+    background-color: transparent;
+}
+.our-form{
+    padding:0 !important;
+}
+.form-event-image > img{
+    width: 100%;
+    object-fit: cover;
+    height: 230px;
+}
+.main-part-of-the-form{
+    padding: 35px 45px;
+}
+.main-part-of-the-form > h3{
+    color: #3268b8;
+    margin-bottom: 33px;
+}
+.btn-close{
+    padding-left: 20px !important;
+}
+.button-scan{
+    color: #8b62f4;
+    margin-right: 6px;
+}
+.btn-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+.modal-header, .modal-footer, .modal-body {
+    border: none;
+}
+.modal-content{
+    width: fit-content;
+}
+.modal-footer{
+    padding-right: 0;
+}
+.modal-body {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+#switchCamera {
+    color: grey;
+    text-align: right;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.notDisplayed{
+    display: none;
+}
+#viewVideo{
+    text-align: center;
+    margin-bottom: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.modal-title > span{
+    font-weight: 600;
+}
+.alert{
+    z-index: 100;
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px 15px;
+}
+.align-for-buttom{
+    padding: 15px;
+}
+#checkmark{
+    height: 8em;
+    width: 8em;
+}
+.animated-check {
+    height: 10em;
+    width: 10em
+}
+
+.animated-check path {
+    fill: none;
+    stroke: #7ac142;
+    stroke-width: 4;
+    stroke-dasharray: 23;
+    stroke-dashoffset: 23;
+    animation: draw 1s linear forwards;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0
+    }
+}
+@media (max-width: 576px) {
+    .bi-qr-code-scan{
+        margin-right:-5px;
+    }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('login')}"></head>
+<body>
+<div class="top-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-chat-left-dots"
+         viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+    </svg>
+</div>
+<div class="bottom-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-chat-left-dots"
+         viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+    </svg>
+</div>
+<nav th:replace="~{fragments/navbar :: navbar('login', 'yes', ${firstname}, 'user')}"></nav>
+<div class="container main-container">
+    <div class="row center-for-form">
+        <form class="our-form" method="post" action="/event/api/newEvent" th:object="${eventDTO}"
+              enctype="multipart/form-data">
+            <h3>Create a YUP!</h3>
+            <p id="containerForTypewriterText">
+                <span id="typewriterText"></span><span class="blink">|</span>
+            </p>
+            <div class="input-data">
+                <input type="text" id="inputName" name="name" th:field="*{name}" placeholder="" autofocus>
+                <div class="underline"></div>
+                <label for="inputName">Event name</label>
+            </div>
+            <div class="input-data-box">
+                <select id="inputTag" name="tag">
+                    <option th:each="tag : ${tags}" th:value="${tag}"
+                            th:text="'#' + ${#strings.toLowerCase(tag)}"></option>
+                </select>
+                <label for="inputName">Tag</label>
+            </div>
+            <div class="input-data-box">
+                <input type="datetime-local" id="inputStartDateTime" name="startDateTime" th:field="*{startDateTime}">
+                <div class="underline"></div>
+                <label for="inputStartDateTime">Start date time</label>
+            </div>
+            <div class="input-data-box">
+                <input type="datetime-local" id="inputEndDateTime" name="endDateTime" th:field="*{endDateTime}">
+                <div class="underline"></div>
+                <label for="inputEndDateTime">End date time</label>
+            </div>
+            <div class="input-data form-block" id="searchBoxContainer">
+                <input id="searchBox" class="input-form" type="text" th:field="*{location}" placeholder=""
+                       autocomplete="off">
+                <div class="underline"></div>
+                <label for="searchBox">Location</label>
+                <input type="hidden" id="latitude" class="input-form" th:field="*{latitude}">
+                <input type="hidden" id="longitude" class="input-form" th:field="*{longitude}">
+            </div>
+            <div class="input-data-area">
+                <textarea id="inputDescription" th:field="*{description}" placeholder=""></textarea>
+                <div class="underline"></div>
+                <label for="inputDescription">Event Description</label>
+            </div>
+            <div class="input-data">
+                <input type="number" id="inputMaxParticipants" name="participantsMaxNumber"
+                       th:field="*{participantsMaxNumber}" placeholder="">
+                <div class="underline"></div>
+                <label for="inputMaxParticipants">Max. number of participants</label>
+            </div>
+
+            <label class="btn btn-file-upload">
+                <input id="inputImage" type="file" name="eventImageFile" accept="image/*"/>
+            </label>
+
+            <div class="center-for-button">
+                <button class="btn btn-primary sendEmailToYupTeamModalLabel" id="submitButton" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> <span id="alertText"></span>
+    <button type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<span class="event-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor"
+                 class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+            </svg>
+        </span>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax"></script>
+<script th:src="@{/script/main-script.js}"></script>
+<script src='https://www.bing.com/api/maps/mapcontrol?key=AoT-Xgbyi-r8h5HmJWJZhXdEkbL2UYOluU7LDUsdwu8zKUyj51W7oO4p5hJxqWuG&callback=loadMapScenario'
+        async defer></script>
+<script th:src="@{/script/bing.js}"></script>
+<script type="module" th:src="@{/script/event.js}"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.modal-header, .modal-footer, .modal-body {
+    border: none;
+}
+.modal-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-body {
+    padding-bottom: 0;
+}
+
+.modal-body > p {
+    font-size: 10px;
+    color: grey;
+}
+
+.btn-secondary{
+    background-color: #6c757d;
+    padding: 9px 17px;
+    border: 2px solid #8b62f4;
+    border-radius: 5px;
+}
+
+.modal-title{
+    color: #3268b8;
+}
+
+.modal-body > h6{
+    font-size: 13px;
+    color: grey;
+}

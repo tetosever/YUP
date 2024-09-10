@@ -1,0 +1,226 @@
+.center-event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+    height: 0;
+    box-shadow: inset 0 -20px 20px -25px rgba(255, 255, 255, 0.2);
+}
+
+.event {
+    background-color: white;
+    width: 50%;
+    border-radius: 15px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.single-event-image {
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.single-event-image > img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.event-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 0;
+}
+
+.badges {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0 0 8px;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+}
+
+.badges > div:nth-child(1) {
+    border-radius: 10px;
+    font-weight: 600;
+    border: 3px solid #002c8e;
+    background-color: rgba(42, 216, 253, 0.1);
+    color: #002c8e;
+    font-size: 14px;
+    padding: 6px 13px;
+}
+
+.badges > div:nth-child(2) {
+    border-radius: 10px;
+    font-weight: 600;
+    border: 3px solid #4FDB6F;
+    background-color: #4FDB6F;
+    color: white;
+    font-size: 14px;
+    padding: 6px 13px;
+}
+
+#event-name {
+    font-size: 28px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #3168b8;
+    margin-bottom: 17px;
+}
+
+.event-detail > p:nth-child(2){
+    margin-bottom: 12px;
+}
+
+#event-location {
+    font-size: 18px;
+    margin: 0;
+}
+
+#event-location p {
+    margin-bottom: 0;
+    text-transform: capitalize;
+    color: black;
+}
+
+#event-date {
+    font-size: 16px;
+    margin: 0;
+}
+
+#event-date p {
+    color: black;
+}
+
+.event-detail {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#btn-maps-view {
+    margin: 0;
+    border-radius: 7px;
+    background-color: transparent;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    font-size: 14px;
+    color: #3168b8;
+}
+
+#btn-maps-view > :nth-child(1) {
+    margin-right: 5px;
+}
+
+.event-label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+#event-location-full {
+    text-transform: capitalize;
+}
+
+
+.badges > p > span {
+    text-transform: capitalize;
+}
+
+.event-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 30px;
+    margin: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+.book-button button {
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    background-color: #8b62f4;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.book-button button:hover {
+    background-color: #8A74C2;
+    animation-duration: 1s;
+}
+
+.zero-participants-class {
+    color: #DB2B3D;
+}
+
+.low-participants-class {
+    color: #DB724F;
+}
+
+.high-participants-class {
+    color: #4FDB6F;
+}
+
+.zero-participants-class, .low-participants-class, .high-participants-class {
+    display: flex;
+    font-size: 15px;
+    width: fit-content;
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 992px) {
+    .event {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .event {
+        width: 100%;
+    }
+
+    #event-name {
+        font-size: 24px;
+    }
+
+    #event-location {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    #event-date, .event-label, .book-button button, #btn-maps-view {
+        font-size: 14px;
+    }
+
+    .event-detail, .zero-participants-class, .low-participants-class, .high-participants-class {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        padding: 0 8px;
+    }
+
+    .event {
+        width: 100%;
+    }
+}

@@ -1,0 +1,99 @@
+<nav th:fragment="navbar(who, logged, firstname, second_who)" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img th:src="@{'/images/YUP_logo.png'}" class="d-inline-block align-text-top"/>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" th:classappend="${who=='around'} ? 'active' : ''">
+                    <a class="nav-link" aria-current="page" th:href="@{'/event/all'}">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                 class="bi bi-compass" viewBox="0 0 16 16">
+                                <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016m6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"></path>
+                                <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"></path>
+                            </svg>
+                        </span>
+                        <span>Around you</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" th:if="${logged=='yes'}" th:classappend="${who=='login'} ? 'active' : ''">
+                    <div class="nav-link d-flex align-items-center dropdown-toggle"
+                       id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                                 class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </span>
+                        <span th:text="${firstname}"></span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li th:classappend="${second_who=='user'} ? 'active' : ''"><a class="dropdown-item"
+                                                                                      th:href="@{'/user/viewUser'}">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                     class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+                                </svg>
+                            </span>
+                            <span>About me</span>
+                        </a></li>
+                        <li th:classappend="${second_who=='event'} ? 'active' : ''"><a class="dropdown-item"
+                                                                                       th:href="@{'/event/myEvents'}">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                     class="bi bi-journal" viewBox="0 0 16 16">
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                            </svg>
+                            </span>
+                            <span>My events</span>
+                        </a></li>
+                        <li th:classappend="${second_who=='reservation'} ? 'active' : ''"><a class="dropdown-item"
+                                                                                             th:href="@{'/reservation/myReservations'}">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                     class="bi bi-journal-check" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                                  <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                                  <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                                </svg>
+                            </span>
+                            <span>My reservations</span>
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{'/auth/api/logout'}">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                     class="bi bi-person-fill-x" viewBox="0 0 16 16">
+                                  <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                                  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m-.646-4.854.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 0 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 .708-.708"/>
+                                </svg>
+                            </span>
+                            <span>Log out</span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" th:classappend="${who=='login'} ? 'active' : ''" th:if="${logged=='no'}">
+                    <a class="nav-link d-flex align-items-center" th:href="@{'/auth/login'}">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                                 class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </span>
+                        <span>Log in</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

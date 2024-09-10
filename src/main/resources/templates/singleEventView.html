@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('event')}"></head>
+<body>
+<div class="top-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-chat-left-dots"
+         viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+    </svg>
+</div>
+<div class="bottom-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-chat-left-dots"
+         viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2aisReserved1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+    </svg>
+</div>
+<nav class="navbar navbar-expand-lg"
+     th:replace="~{fragments/navbar :: navbar(${imOwner != null && imOwner == true ? 'login' : 'around'}, ${firstname != null ? 'yes' : 'no'}, ${firstname}, ${imOwner != null && imOwner == true ? 'event' : 'around'})}"></nav>
+<div class="container main-container">
+    <div class="row center-event" th:if="${event != null}">
+        <div class="event">
+            <div class="badges">
+                <div class="badge" th:text="${event.tag}"></div>
+                <div class="badge" th:if="${firstname != null && isReserverd != null && isReserved == true}">BOOKED
+                </div>
+            </div>
+            <div class="single-event-image">
+                <img th:if="${event.eventImage != null && event.eventImage.length > 0}"
+                     th:src="@{'/event/' + ${event.id} + '/image'}"
+                     alt="Event Image" class="img-fluid">
+                <img th:if="${event.eventImage == null || event.eventImage.length == 0}"
+                     th:src="@{/images/default-image.jpg}"
+                     alt="Event Image" class="img-fluid">
+            </div>
+            <div class="event-body">
+                <h6 id="event-name" th:text="${event.name}"></h6>
+                <div class="event-detail">
+                    <p class="event-label">About</p>
+                    <p th:text="${event.description}"></p>
+                </div>
+                <div class="event-detail">
+                    <p class="event-label">When</p>
+                    <p>
+                        From <span th:text="${#temporals.format(event.startDateTime, 'EEE - dd MMM, HH:mm')}"></span> to
+                        <span
+                                th:text="${#temporals.format(event.endDateTime, 'EEE - dd MMM, HH:mm')}"></span>.
+                    </p>
+                </div>
+
+                <div class="event-detail">
+                    <p class="event-label">Location</p>
+                    <p>
+                        <span id="event-location-full" th:text="${event.location}"></span>
+                    </p>
+                    <a id="btn-maps-view" th:href="'http://maps.google.com/?q=' + ${event.location}" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                             class="bi bi-compass-fill" viewBox="0 0 16 16">
+                            <path d="M15.5 8.516a7.5 7.5 0 1 1-9.462-7.24A1 1 0 0 1 7 0h2a1 1 0 0 1 .962 1.276 7.5 7.5 0 0 1 5.538 7.24m-3.61-3.905L6.94 7.439 4.11 12.39l4.95-2.828 2.828-4.95z"/>
+                        </svg>
+                        Show on Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="event-footer">
+                <div th:if="${event.participants != 0 && isReserved != null && !isReserved}">
+                    <div th:class="${event.participants == 0 ? 'zero-participants-class' : (event.participants <= (0.15 * event.participantsMaxNumber) ? 'low-participants-class' : 'high-participants-class')}">
+                        <span th:if="${event.participants == 0}">FULL</span>
+                        <span th:if="${event.participants > 0 and event.participants <= (0.15 * event.participantsMaxNumber)}">FEW LEFT</span>
+                        <span th:if="${event.participants > (0.15 * event.participantsMaxNumber)}">AVAILABLE</span>
+                    </div>
+                    <form class="book-button" th:method="${method}" th:action="${actionBooking}"
+                          th:object="${reservationRequest}">
+                        <input type="hidden" name="userId" th:field="*{userId}">
+                        <input type="hidden" name="eventId" th:field="*{eventId}">
+                        <button type="submit"
+                                th:if="${firstname != null && isReserved == false && imOwner == false && userCanReserve == true|| firstname == null}"
+                                th:disabled="${event.participants == 0 || imOwner == true || userCanReserve == false}">
+                            BOOK
+                        </button>
+                    </form>
+                </div>
+                <div th:if="${isReserved}" class="align-for-button">
+                    <a class="btn btn-registration" data-bs-toggle="modal"
+                       data-bs-target="#warningDeleteModal">
+                        Delete
+                    </a>
+                    <button id="qrcode" type="button"
+                            class="btn YupTeamEmailModal" data-bs-toggle="modal"
+                            data-bs-target="#generateQrCodeModal"
+                            th:if="${(firstname != null && isReserved != null && isReserved==true)}"
+                            onClick="generateQRCode()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-qr-code" viewBox="0 0 16 16">
+                            <path d="M2 2h2v2H2z"/>
+                            <path d="M6 0v6H0V0zM5 1H1v4h4zM4 12H2v2h2z"/>
+                            <path d="M6 10v6H0v-6zm-5 1v4h4v-4zm11-9h2v2h-2z"/>
+                            <path d="M10 0v6h6V0zm5 1v4h-4V1zM8 1V0h1v2H8v2H7V1zm0 5V4h1v2zM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8zm0 0v1H2V8H1v1H0V7h3v1zm10 1h-1V7h1zm-1 0h-1v2h2v-1h-1zm-4 0h2v1h-1v1h-1zm2 3v-1h-1v1h-1v1H9v1h3v-2zm0 0h3v1h-2v1h-1zm-4-1v1h1v-2H7v1z"/>
+                            <path d="M7 12h1v3h4v1H7zm9 2v2h-3v-1h2v-1z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade YupTeamEmailModal" id="generateQrCodeModal" tabindex="-1"
+     aria-labelledby="generateQrCodeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateQrCodeModalLabel">This is your <span>reservation!</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="qr-code-image"></div>
+                <p id="qr-code-text"></p>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<span class="event-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor"
+                 class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+            </svg>
+        </span>
+<div class="modal fade" id="warningDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Are you sure YUPper?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel your YUP Reservation? The reservation will be permanently lost, and
+                    you will lose priority for participating in the event</p>
+            </div>
+            <div class="modal-footer align-for-button">
+                <button type="button" class="btn btn-registration" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <form th:method="${method}" th:action="${actionDeleteReservation}"
+                      th:object="${reservationRequest}">
+                    <input type="hidden" name="userId" th:field="*{userId}">
+                    <input type="hidden" name="eventId" th:field="*{eventId}">
+                    <button type="submit" class="btn btn-primary"
+                            th:disabled="${(firstname != null && isReserved != null && isReserved==false) || imOwner != null && imOwner==true}">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script th:src="@{/script/main-script.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let code = /*[[${code}]]*/ 'default';
+    /*]]>*/
+</script>
+<script th:src="@{/script/singleEventView.js}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+package app.YUP.exception;
+
+/**
+ * This class represents a custom exception that is thrown when an invalid parameter is encountered.
+ * It extends the RuntimeException class, which is a form of Throwable that indicates conditions that a reasonable application might want to catch.
+ *
+ * @version 1.0
+ */
+public class InvalidParameterException extends RuntimeException {
+
+    /**
+     * Constructs a new InvalidParameterException with the specified detail message.
+     * The detail message is saved for later retrieval by the getMessage() method.
+     *
+     * @param message the detail message.
+     */
+    public InvalidParameterException(final String message) {
+        super(message);
+    }
+
+    /**
+     * Constructs a new InvalidParameterException with the specified cause.
+     * The cause is saved for later retrieval by the getCause() method.
+     * A null value is permitted, and indicates that the cause is nonexistent or unknown.
+     *
+     * @param cause the cause (which is saved for later retrieval by the getCause() method).
+     */
+    public InvalidParameterException(final Throwable cause) {
+        super(cause);
+    }
+}
